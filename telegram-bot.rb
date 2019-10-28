@@ -19,9 +19,9 @@ help = "Available commands:
 	/test - Just a test message
 	/random - gives you a random number. You can pass up to two numbers as arguments"
 
-bot.addCommandAndResponse('/start', "Hi! I'm a bot written in Ruby. To see the commands available, write /help")
-bot.addCommandAndResponse('/help', help)
-bot.addCommandAndResponse('/test', 'This is an automated message, obviously!')
-bot.addCommandAndResponse('/random', random_int)
+bot.add_command_and_response('/start', "Hi! I'm a bot written in Ruby. To see the commands available, write /help")
+bot.add_command_and_response('/help', help)
+bot.add_command_and_response('/test', 'This is an automated message, obviously!')
+bot.add_command_and_response('/random', random_int)
 
 bot.listen()
