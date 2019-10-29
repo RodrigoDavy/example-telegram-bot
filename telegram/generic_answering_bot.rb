@@ -1,31 +1,22 @@
-require 'telegram/bot'
+require './generic_bot'
 
-class Bot
-	def initialize(token)
-		@bot = Telegram::Bot::Client.new(token)
+class GenericAnsweringBot < GenericBot
+	def initialize(bot)
+		super
 		@messages_and_responses = { }
-	end
-
-	def listen()
-		@bot.listen { |message| respond(message) }
-	end
-
-	def send_message(chat_id, text)
-		@bot.api.send_message(chat_id: chat_id, text: text)
-		puts 'Message sent to ' + chat_id.to_s
 	end
 
 	def add_command_and_response(command, response)
 		@messages_and_responses.merge!({ command.to_sym => response })
 	end
 
-	private
-
-	def respond(message)
-		command, args = parse_message(message.to_s)
+	def respond(message, chat)
+		command, args = parse_message(message)
 		response = get_response(command, args)
-		send_message(message.chat.id, response) unless response.empty?
+		send_message(chat, response) unless response.empty?
 	end
+
+	private
 
 	def parse_message(message)
 		args = message.split(" ")
