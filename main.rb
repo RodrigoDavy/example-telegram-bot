@@ -14,7 +14,7 @@ def run
 	bot.add_command_and_response('/test', @test)
 	bot.add_command_and_response('/random', @random_int)
 
-	bot.listen { |message, chat| bot.respond(message, chat) }
+	bot.listen { |chat, message| bot.respond(chat, message) }
 end
 
 def set_strings

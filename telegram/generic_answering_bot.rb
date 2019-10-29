@@ -1,4 +1,4 @@
-require './generic_bot'
+require './telegram/generic_bot'
 
 class GenericAnsweringBot < GenericBot
 	def initialize(bot)
@@ -10,7 +10,7 @@ class GenericAnsweringBot < GenericBot
 		@messages_and_responses.merge!({ command.to_sym => response })
 	end
 
-	def respond(message, chat)
+	def respond(chat, message)
 		command, args = parse_message(message)
 		response = get_response(command, args)
 		send_message(chat, response) unless response.empty?

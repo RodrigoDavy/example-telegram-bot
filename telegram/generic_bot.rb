@@ -8,7 +8,7 @@ class GenericBot
 		puts 'Message sent to ' + chat_id.to_s
 	end
 
-	def listen()
-		@bot.listen { |message| yield(message.to_s, message.chat.id) }
+	def listen
+		@bot.listen { |message| yield(message.chat.id, message.to_s) }
 	end
 end
