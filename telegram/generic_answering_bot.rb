@@ -27,7 +27,7 @@ class GenericAnsweringBot < GenericBot
 	def get_response(key, args = [])
 		return "" unless @messages_and_responses.has_key?(key)
 
-		return @messages_and_responses[key].(args) if @messages_and_responses[key].is_a?(Proc)
-		@messages_and_responses[key]
+		return @messages_and_responses[key].(args).to_s if @messages_and_responses[key].is_a?(Proc)
+		@messages_and_responses[key].to_s
 	end
 end
