@@ -32,12 +32,13 @@ class GenericAnsweringBot < GenericBot
 	end
 
 	def parse_message(message)
-		words = message.split(" ")
+		words = message&.split(" ")
 		key_pos = get_command_index(words)
 		return words, key_pos
 	end
 
 	def get_command_index(words)
+		return nil if words.nil?
 		return 0 if words[0][0] == '/'
 		non_slash_commands().each() do |command|
 			return words.index(command) unless words.index(command).nil?
