@@ -11,7 +11,7 @@ def run
 
 	bot.add_command_and_response('/start', @start)
 	bot.add_command_and_response('/help', @help)
-	bot.add_command_and_response('/test', @test)
+	bot.add_command_and_response('test', @test)
 	bot.add_command_and_response('/random', @random_int)
 
 	bot.listen { |chat, message| bot.respond(chat, message) }
@@ -24,10 +24,11 @@ def set_strings
 		--------------------------
 		/start - Welcome message
 		/help - Shows this message
-		/test - Just a test message
-		/random - gives you a random number. You can pass up to two numbers as arguments"
+		/random - gives you a random number. You can pass up to two numbers as arguments
 
-	@test = 'This is an automated message, obviously!'
+		P.S.: You can also type a message containing the word 'test', if you want"
+
+	@test = "Yay, this bot can detect the word 'test' in any position in the message!"
 end
 
 def set_methods
